@@ -7,3 +7,18 @@
 {% block primer_vista %}
 <h1 class="mb-5"> Aqui puede añadir un instrumento </h1>
 {% endblock primer_vista %}
+
+{% block cuerpo %}
+
+
+<ul>
+    <form action={% url 'carga_instrumento' %} method= "post" >
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Crear</button>
+    </form>
+</ul>
+{% endblock cuerpo %}
+
