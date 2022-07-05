@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .form import formIntrumento
 from .models import Instrumento
@@ -21,16 +21,19 @@ def carga_instrumento(request):
         if form.is_valid():
             data=form.cleaned_data
             
-            instrumento= Instrumento(
-                 nombre= data.get("nombre"),
-                 tipo= data.get("tipo"),
-                 fecha_creacion=data.get('fecha_creacion') if data.get('fecha_creacion') else datetime.now()
+            instrumento= Instrumento( nombre= data.get("nombre"),
+                                      tipo= data.get("tipo"),
+                                      fecha_creacion=data.get('fecha_creacion') if data.get('fecha_creacion') else datetime.now()
             )
             instrumento.save()
-            return render (request,"carga_instrumento.html",{"form":form})
+            return render (request,"lista_instrumento.html",{})
         else:
-            return render (request,"carga_instrumento.html", {"form":form})    
+            return redirect ("lista_instrumento")   
     
     form_instrumento= formIntrumento()
     
     return render (request,"carga_instrumento.html",{"form":form_instrumento})
+
+def lista_instrumento(request):
+    
+    return render (request,"lista_instrumento.html", {})
