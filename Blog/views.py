@@ -1,9 +1,14 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .form import busquedaInstrumento, formInstrumento
 from .models import Instrumento
 from datetime import datetime
 
+
+def about(request):
+    
+    return HttpResponse ("Se trata de una pagina donde se puede ver un listado de instrumentos y tambien cargar instrumentos nuevos a la lista")
 
 def inicio (request):
     
