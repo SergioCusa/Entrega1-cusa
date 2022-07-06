@@ -3,3 +3,22 @@
 {% block title %}
 <title>Lista de instrumentos</title>
 {% endblock title %}
+
+{% block primer_vista %}
+<h1 class="mb-5"> esta es la lista </h1>
+{% endblock primer_vista %}
+
+{% block cuerpo %}
+
+<p>
+   <ul>
+
+       {% for instrumento in lista_instrumento %}
+       <li> {{instrumento}} </li>
+       {% endfor %}
+   </ul>
+
+</p>
+
+{% endblock cuerpo %}
+
