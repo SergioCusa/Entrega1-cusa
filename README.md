@@ -15,7 +15,7 @@ para correr el blog.
 ### Uso
 En la parte superior de la pantalla de inicio se encuentran dos botones:  
 Inicio: Vuelve a cargar la pantalla de inicio  
-Instrumentos: Devuelve un listado de instrumetos cargados en la Bd, el mismo template    cuenta con un buscador,un boton para gargar instrumentos y la opcion de eliminar y   modificar cualquier elemento de la lista.  
+Instrumentos: Devuelve un listado de instrumetos cargados en la Bd, el mismo template    cuenta con un buscador y un boton para gargar instrumentos.      
 Para buscar un elemento escriba la palabra clave y precione "Buscar", esto devolvera un   listado con las coincidencias encontradas, de no encontrar ninguna devolvera el mensaje "No se encontraron resultados", precione "Buscar"nuevamente para volver al listado.  
 Para ingresar un elemento a la lista precione en "Cargar instrumento" y podra llenar 3   campos:  
 -Nombre: ingrese nombre del instrumento  
