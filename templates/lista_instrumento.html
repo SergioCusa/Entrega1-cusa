@@ -9,15 +9,30 @@
 {% endblock primer_vista %}
 
 {% block cuerpo %}
+<p>
+    <a href= {% url 'carga_instrumento' %} >Cargar instrumento</a>
+</p>
 
 <p>
-   <ul>
+   
+    <form action= {% url 'lista_instrumento' %} >
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
 
-       {% for instrumento in lista_instrumento %}
-       <li> {{instrumento}} </li>
-       {% endfor %}
-   </ul>
-
+<p>
+    {% if lista_instrumento %}
+    <ul>
+        
+        {% for instrumento in lista_instrumento %}
+        <li> {{instrumento.nombre}} , tipo de instrumento: {{instrumento.tipo}} </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    No se encontraron resultados.
+    {% endif %}
+    
 </p>
 
 {% endblock cuerpo %}

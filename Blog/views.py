@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from .form import formInstrumento
+from .form import busquedaInstrumento, formInstrumento
 from .models import Instrumento
 from datetime import datetime
 
@@ -26,8 +26,7 @@ def carga_instrumento(request):
                                       fecha_creacion=data.get('fecha_creacion') if data.get('fecha_creacion') else datetime.now()
             )
             instrumento.save()
-            lista_instrumento=Instrumento.objects.all()
-            return render (request,"lista_instrumento.html",{"lista_instrumento":lista_instrumento})
+            return redirect("lista_instrumento")
         else:
             return render (request,"carga_instrumento.html",{"form":form})  
     
@@ -37,6 +36,12 @@ def carga_instrumento(request):
 
 def lista_instrumento(request):
     
-    lista_instrumento= Instrumento.objects.all()
+    nommbre_de_busqueda=request.GET.get("nombre")
     
-    return render (request,"lista_instrumento.html", {"lista_instrumento":lista_instrumento })
+    if nommbre_de_busqueda:
+        lista_instrumento= Instrumento.objects.filter(nombre__icontains=nommbre_de_busqueda)  
+    else:   
+        lista_instrumento= Instrumento.objects.all()
+    
+    form=busquedaInstrumento()
+    return render (request,"lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
