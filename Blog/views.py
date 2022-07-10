@@ -1,3 +1,4 @@
+from mimetypes import init
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
@@ -52,8 +53,22 @@ def lista_instrumento(request):
     return render (request,"lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
 
 def editar_instrumento (request , id):
+    instrumento= Instrumento.objects.get(id=id)
     
-    return redirect ("lista_instrumento")
+    if request.method == "POST":
+        form = formInstrumento(request.POST)
+        if form.is_valid():
+            instrumento.nombre= form.cleaned_data.get("nombre")  
+            instrumento.tipo = form.cleaned_data.get("tipo")
+            instrumento.fecha_creacion = form.cleaned_data.get("fecha_creacion")
+            instrumento.save()
+            return redirect ("lista_instrumento")
+        else:
+            return render (request, "editar_instrumento.html" , {"form":form, "instrumento":instrumento})
+    
+    form_instrumento= formInstrumento (initial={"nombre":instrumento.nombre,"tipo":instrumento.tipo,"fecha_creacion":instrumento.fecha_creacion})
+    
+    return render(request, "editar_instrumento.html" , {"form":form_instrumento, "instrumento":instrumento})    
 
 def eliminar_instrumento (request , id):
     

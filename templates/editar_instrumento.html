@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Editar instrumentos</title>
+{% endblock title %}
+
+{% block primer_vista %}
+<h1 class="mb-5"> Aqui puede editar un instrumento </h1>
+{% endblock primer_vista %}
+
+{% block cuerpo %}
+
+
+<ul>
+    <form action={% url 'editar_instrumento' instrumento.id %} method= "post" >
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Editar</button>
+    </form>
+</ul>
+{% endblock cuerpo %}
