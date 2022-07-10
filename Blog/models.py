@@ -10,4 +10,8 @@ class Instrumento (models.Model):
     tipo=models.CharField(max_length=30)
     fecha_creacion=models.DateField(null=True)
     
+    def __str__(self):
+        return f'{self.nombre} , tipo de instrumento: {self.tipo} '
+    
+    
     
