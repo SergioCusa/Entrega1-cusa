@@ -8,8 +8,8 @@ urlpatterns = [
     path('', inicio,name="inicio" ),
     path('carga_instrumento/', carga_instrumento , name="carga_instrumento" ),
     path('lista_instrumento/', lista_instrumento , name="lista_instrumento" ),
-    path('editar_instrumento/', editar_instrumento , name="editar_instrumento" ),
-    path('eliminar_instrumento/', eliminar_instrumento , name="eliminar_instrumento" ),
+    path('editar_instrumento/<int:id>', editar_instrumento , name="editar_instrumento" ),
+    path('eliminar_instrumento/<int:id>', eliminar_instrumento , name="eliminar_instrumento" ),
     path ("about/", about ),
     path('base/', base   ),
 

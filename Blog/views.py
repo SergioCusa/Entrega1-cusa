@@ -51,10 +51,13 @@ def lista_instrumento(request):
     form=busquedaInstrumento()
     return render (request,"lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
 
-def editar_instrumento (request):
+def editar_instrumento (request , id):
     
     return redirect ("lista_instrumento")
 
-def eliminar_instrumento (request):
+def eliminar_instrumento (request , id):
+    
+    instrumento=Instrumento.objects.get(id=id)
+    instrumento.delete()
     
     return redirect ("lista_instrumento")
