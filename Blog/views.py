@@ -34,11 +34,11 @@ def carga_instrumento(request):
             instrumento.save()
             return redirect("lista_instrumento")
         else:
-            return render (request,"carga_instrumento.html",{"form":form})  
+            return render (request,"instrumento/carga_instrumento.html",{"form":form})  
     
     form_instrumento= formInstrumento()
     
-    return render (request,"carga_instrumento.html",{"form":form_instrumento})
+    return render (request,"instrumento/carga_instrumento.html",{"form":form_instrumento})
 
 def lista_instrumento(request):
     
@@ -50,7 +50,7 @@ def lista_instrumento(request):
         lista_instrumento= Instrumento.objects.all()
     
     form=busquedaInstrumento()
-    return render (request,"lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
+    return render (request,"instrumento/lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
 
 def editar_instrumento (request , id):
     instrumento= Instrumento.objects.get(id=id)
@@ -64,11 +64,11 @@ def editar_instrumento (request , id):
             instrumento.save()
             return redirect ("lista_instrumento")
         else:
-            return render (request, "editar_instrumento.html" , {"form":form, "instrumento":instrumento})
+            return render (request, "instrumento/editar_instrumento.html" , {"form":form, "instrumento":instrumento})
     
     form_instrumento= formInstrumento (initial={"nombre":instrumento.nombre,"tipo":instrumento.tipo,"fecha_creacion":instrumento.fecha_creacion})
     
-    return render(request, "editar_instrumento.html" , {"form":form_instrumento, "instrumento":instrumento})    
+    return render(request, "instrumento/editar_instrumento.html" , {"form":form_instrumento, "instrumento":instrumento})    
 
 def eliminar_instrumento (request , id):
     
@@ -81,4 +81,4 @@ def mostrar_instrumento (request, id):
     
     instrumento= Instrumento.objects.get(id=id)
     
-    return render(request,"mostrar_instrumento.html",{"instrumento":instrumento})
+    return render(request,"instrumento/mostrar_instrumento.html",{"instrumento":instrumento})
