@@ -13,6 +13,7 @@
 
 <ul>
     <form action={% url 'editar_instrumento' instrumento.id %} method= "post" >
+        <a href= {% url 'lista_instrumento' %} >Volver</a>
         {% csrf_token %}
         <table>
             {{form.as_table}}

@@ -27,6 +27,7 @@
         
         {% for instrumento in lista_instrumento %}
         <li> {{instrumento}}  
+        <a href={% url 'mostrar_instrumento' instrumento.id %}>Mostrar</a> 
         <a href={% url 'editar_instrumento' instrumento.id %}>Editar</a> 
         <a href={% url 'eliminar_instrumento' instrumento.id %}>Eliminar</a>
         </li> 

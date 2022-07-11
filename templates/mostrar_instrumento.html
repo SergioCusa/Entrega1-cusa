@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Mostrar instrumentos</title>
+{% endblock title %}
+
+
+
+{% block cuerpo %}
+
+
+<ul>
+    <form action={% url 'editar_instrumento' instrumento.id %} method= "post" >
+        <a href= {% url 'lista_instrumento' %} >Volver</a>
+        
+            <li>
+               Nombre: {{instrumento.nombre}}
+            </li>
+            <li>
+               Tipo: {{instrumento.tipo}}
+            </li>
+            <li>
+             Creado:   {{instrumento.fecha_creacion}}
+            </li>
+        
+           
+    </form>
+</ul>
+{% endblock cuerpo %}

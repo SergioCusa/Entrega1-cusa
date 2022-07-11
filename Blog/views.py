@@ -76,3 +76,9 @@ def eliminar_instrumento (request , id):
     instrumento.delete()
     
     return redirect ("lista_instrumento")
+
+def mostrar_instrumento (request, id):
+    
+    instrumento= Instrumento.objects.get(id=id)
+    
+    return render(request,"mostrar_instrumento.html",{"instrumento":instrumento})
