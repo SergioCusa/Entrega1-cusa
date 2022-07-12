@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista de accesorios</title>
+{% endblock title %}
+
+{% block primer_vista %}
+<h1 class="mb-5"> esta es la lista </h1>
+{% endblock primer_vista %}
+
+{% block cuerpo %}
+<p>
+    <a href= {% url 'carga_accesorio' %} >Cargar accesorio</a>
+</p>
+
+<p>
+   
+    <form action= {% url 'lista_accesorio' %} >
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+
+<p>
+    {% if lista_accesorio %}
+    <ul>
+        
+        {% for accesorio in lista_accesorio %}
+        <li> {{accesorio}}  
+        <a href={% url 'mostrar_accesorio' accesorio.id %}>Mostrar</a> 
+        <a href={% url 'editar_accesorio' accesorio.id %}>Editar</a> 
+        <a href={% url 'eliminar_accesorio' accesorio.id %}>Eliminar</a>
+        </li> 
+        {% endfor %}
+    </ul>
+    {% else %}
+    No se encontraron resultados.
+    {% endif %}
+    
+</p>
+
+{% endblock cuerpo %}
