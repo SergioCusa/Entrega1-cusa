@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Mostrar accesorios</title>
+{% endblock title %}
+
+
+
+{% block cuerpo %}
+
+
+<ul>
+    <form action={% url 'editar_accesorio' accesorio.id %} method= "post" >
+        <a href= {% url 'lista_accesorio' %} >Volver</a>
+        
+            <li>
+               Nombre: {{accesorio.nombre}}
+            </li>
+            <li>
+               Tipo: {{accesorio.tipo}}
+            </li>
+            <li>
+             Creado:   {{accesorio.fecha_creacion}}
+            </li>
+        
+           
+    </form>
+</ul>
+{% endblock cuerpo %}
