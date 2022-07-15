@@ -21,7 +21,7 @@
         
         {% for accesorio in object_list %}
         <li> {{accesorio}}  
-        {% comment %} <a href={% url 'mostrar_accesorio' accesorio.id %}>Mostrar</a>  {% endcomment %}
+        <a href={% url 'mostrar_accesorio' accesorio.id %}>Mostrar</a>
         <a href={% url 'editar_accesorio' accesorio.id %}>Editar</a> 
         <a href={% url 'eliminar_accesorio' accesorio.id %}>Eliminar</a>
         </li> 

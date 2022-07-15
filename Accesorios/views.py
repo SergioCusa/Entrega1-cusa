@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView , UpdateView , CreateView
-from django.views.generic.base import View
+from django.views.generic import DetailView
 
 from Accesorios.models import Accesorio
 
@@ -32,5 +32,7 @@ class EliminarAccesorio(DeleteView):
     success_url= "/Accesorios/accesorios"    
     
     
-# class MostrarAccesorio(View):
-#     ...            
+class MostrarAccesorio(DetailView):
+    model= Accesorio
+    template_name= "Accesorios/mostrar_accesorios.html"
+       
