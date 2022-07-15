@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Eliminar accesorios</title>
+{% endblock title %}
+
+{% block primer_vista %}
+<h1 class="mb-5"> Aqui puede eliminar un accesorio </h1>
+{% endblock primer_vista %}
+
+{% block cuerpo %}
+
+<p>
+    <a href= {% url 'lista_accesorio' %} >Volver</a>
+</p>
+
+<p>
+    <form action= {% url 'eliminar_accesorio' object.id  %} method="post">
+        {% csrf_token %}
+        ¿Esta seguro que desea eliminar este elemento?
+        <button>Confirmar</button>
+        
+    </form>
+</p>
+{% endblock cuerpo %}
