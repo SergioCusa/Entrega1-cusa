@@ -9,7 +9,7 @@
 {% endblock primer_vista %}
 
 {% block cuerpo %}
-
+<a href= {% url 'lista_instrumento' %} >Volver</a>
 
 <ul>
     <form action={% url 'carga_instrumento' %} method= "post" >
