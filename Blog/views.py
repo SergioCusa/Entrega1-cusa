@@ -11,13 +11,16 @@ def about(request):
     
     return HttpResponse ("Se trata de una pagina donde se puede ver un listado de instrumentos y tambien cargar instrumentos nuevos a la lista")
 
+
 def inicio (request):
     
     return render (request,"inicio.html",{})
 
+
 def base (request):
     
     return render (request,"base.html",{})
+
 
 def carga_instrumento(request):
     
@@ -40,6 +43,7 @@ def carga_instrumento(request):
     
     return render (request,"instrumento/carga_instrumento.html",{"form":form_instrumento})
 
+
 def lista_instrumento(request):
     
     nommbre_de_busqueda=request.GET.get("nombre")
@@ -51,6 +55,7 @@ def lista_instrumento(request):
     
     form=busquedaInstrumento()
     return render (request,"instrumento/lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
+
 
 def editar_instrumento (request , id):
     instrumento= Instrumento.objects.get(id=id)
@@ -70,12 +75,14 @@ def editar_instrumento (request , id):
     
     return render(request, "instrumento/editar_instrumento.html" , {"form":form_instrumento, "instrumento":instrumento})    
 
+
 def eliminar_instrumento (request , id):
     
     instrumento=Instrumento.objects.get(id=id)
     instrumento.delete()
     
     return redirect ("lista_instrumento")
+
 
 def mostrar_instrumento (request, id):
     
