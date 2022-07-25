@@ -1,10 +1,11 @@
-from mimetypes import init
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
-
 from .form import busquedaInstrumento, formInstrumento
-from .models import Instrumento
 from datetime import datetime
+from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+
+from .models import Instrumento
+
 
 
 def about(request):
@@ -57,6 +58,7 @@ def lista_instrumento(request):
     return render (request,"instrumento/lista_instrumento.html", {"lista_instrumento":lista_instrumento,"form":form })
 
 
+@login_required
 def editar_instrumento (request , id):
     instrumento= Instrumento.objects.get(id=id)
     
@@ -76,6 +78,7 @@ def editar_instrumento (request , id):
     return render(request, "instrumento/editar_instrumento.html" , {"form":form_instrumento, "instrumento":instrumento})    
 
 
+@login_required
 def eliminar_instrumento (request , id):
     
     instrumento=Instrumento.objects.get(id=id)
